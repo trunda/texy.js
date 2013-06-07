@@ -16,6 +16,6 @@
         "underscore": "1.4.x"
     },
     "scripts": {
-
+        "test": "cake test"
     }
 }
