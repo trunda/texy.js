@@ -2,18 +2,14 @@
     "name": "texy.js",
     "version": "0.0.1",
     "dependencies": {
+        "underscore": "1.4.x"
     },
     "devDependencies": {
         "coffee-script" : ">=1.2.0",
-        "wrench": "1.5.1",
-        "which": "1.0.5",
-        "supervisor": "*",
         "mocha": "1.10.x",
-        "supertest": "*",
         "should": "*",
         "assert": "*",
-        "docco-husky": "*",
-        "underscore": "1.4.x"
+        "docco-husky": "*"
     },
     "scripts": {
         "test": "cake test"
