@@ -42,3 +42,4 @@ lib-cov
 Icon?
 ehthumbs.db
 Thumbs.db
+.app/

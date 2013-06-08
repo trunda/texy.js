@@ -10,7 +10,7 @@ red   = '\x1B[0;31m'
 green = '\x1B[0;32m'
 reset = '\x1B[0m'
 
-REPORTER = 'spec'
+REPORTER = 'dot'
 COVERAGE_FILE = 'coverage.html'
 
 pkg = JSON.parse fs.readFileSync('./package.json')

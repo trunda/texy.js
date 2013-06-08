@@ -88,6 +88,19 @@ describe "Texy_Html", ->
 
       assert el.attrs.href is "/some/path?q=query&page=1"
 
+  describe '::getName', ->
+    it 'should return given name', ->
+      el = ce 'div'
+      assert el.getName() is 'div'
+
+  describe '::getChildren', ->
+    it 'should return children array', ->
+      el = ce 'div'
+      el.add ce('a')
+      el.add ce('a')
+      el.add ce('a')
+      assert el.getChildren().length is 3
+
   describe "::add", ->
     el = Texy_Html.el('div')
     child = Texy_Html.el 'a'
@@ -133,6 +146,11 @@ describe "Texy_Html", ->
       el.insert 0, childSecond, true
       assert el._children[0] is childSecond
       assert el._children.length is 1
+
+    it "should throw exception when child is not scalar", ->
+      assert.throws ->
+        el.insert 0, {}
+      , Error
 
   describe '::endTag', ->
     it 'should return end tag', ->
@@ -183,6 +201,10 @@ describe "Texy_Html", ->
     it 'should return empty string if name is null', ->
       el = Texy_Html.el null
       assert el.startTag() is ''
+
+    it 'should add attribute', ->
+      el = ce 'div', class: 'class'
+      assert el.startTag() is '<div class="class">'
 
     it 'should join array attributes', ->
       el = Texy_Html.el 'div',

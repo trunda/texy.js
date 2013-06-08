@@ -213,3 +213,19 @@ module.exports = class Texy_Html
   getContentType: ->
     return Texy.CONTENT_BLOCK if _.isUndefined(Texy_Html.inlineElements[@name])
     return if Texy_Html.inlineElements[@name] then Texy.CONTENT_REPLACED else Texy.CONTENT_MARKUP
+
+  toString: (texy) ->
+    ct = @getContentType()
+    s = texy.protect @startTag(), ct
+    # empty elements are finished now
+    return s if @isEmpty()
+
+    # add content
+    for child in @_children
+      s += if _.isObject(child) then child.toString(texy) else child
+
+    s += texy.protect @endTag(), ct
+
+  toHtml: (texy) -> texy.stringToHtml(@toString(texy))
+
+  toText: (texy) -> texy.stringToText(@toString(texy))
